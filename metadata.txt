@@ -10,7 +10,7 @@
 name=Fiware
 qgisMinimumVersion=3.28
 description=Fiware - Update Layers
-version=3.28.4.001
+version=3.28.4.002
 author=ms.GIS gmbh
 email=contact@msgis.com
 

@@ -40,13 +40,13 @@ class Metadata(QObject):
         return ''
 
     def req_limit(self):
-        return 20
+        return 200
 
     def req_trigger(self):
         return 0.05  # sec
 
     def req_max_feat(self):
-        return 1000
+        return 15000
 
     def req_types(self):
         return 'https://fiwaredev.msgis.net/ngsi-ld/v1/types'

@@ -52,7 +52,10 @@ class WidgetLayerUpdate(QWidget):
             iface = self.iface
             offset = 0
             features = []
-            req_max_feat = self.metadata.req_max_feat()
+            if self.debug:
+                req_max_feat = 500
+            else:
+                req_max_feat = self.metadata.req_max_feat()
             limit = self.metadata.req_limit()
             _type = self.cboLayer.currentText()
             layer = self.cboLayer.currentData()
@@ -61,6 +64,8 @@ class WidgetLayerUpdate(QWidget):
             if self.debug:
                 self.info.err(None, req)
             res = requests.get(req, auth=(self.metadata.req_user(), self.metadata.req_password()))
+            if self.debug:
+                self.info.err(None, res.json())
             # dialog
             pd = QProgressDialog(self.iface.mainWindow())
             pd.setWindowFlag(Qt.FramelessWindowHint)
@@ -68,23 +73,30 @@ class WidgetLayerUpdate(QWidget):
             pd.setWindowTitle('Update Layer: {0}'.format(_type))
             pd.setMinimum(0)
             pd.setMaximum(req_max_feat)
-            pd.setLabelText('Geladene features...')
+            pd.setLabelText('Lade Objekte...')
             pd.setAutoClose(False)
             pd.show()
             QApplication.processEvents()
+            fidx = layer.fields().indexFromName('id')
             while res.status_code == 200:
                 j = res.json()
                 if len(j):
                     pd.setValue(offset)
                     for enty in j:
+                        if self.debug:
+                            self.info.err(None, 'id:', enty['id'])
+                        _id = enty['id'].split('.')[1]
+                        if _id.isnumeric():
+                            _id = int(_id)
                         geojson = enty['location']['value']
                         if self.debug:
-                            self.info.err(None, geojson)
+                            self.info.err(None, 'geojson:', geojson)
                         string = json.dumps(geojson)
                         geom = ogr.CreateGeometryFromJson(string)
                         geom = QgsGeometry.fromWkt(geom.ExportToWkt())
                         feat = QgsVectorLayerUtils.createFeature(layer)
                         feat.setGeometry(geom)
+                        feat.setAttribute('id', _id)
                         features.append(feat)
                 else:
                     break
@@ -101,6 +113,7 @@ class WidgetLayerUpdate(QWidget):
                 res = requests.get(req, auth=(self.metadata.req_user(), self.metadata.req_password()))
 
             if not pd.wasCanceled():
+                pd.setLabelText('Speichere Objekte...')
                 layer.dataProvider().truncate()
                 layer.dataProvider().addFeatures(features)
                 layer.dataProvider().reloadData()
