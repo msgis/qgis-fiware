@@ -85,9 +85,10 @@ class WidgetLayerUpdate(QWidget):
                     for enty in j:
                         if self.debug:
                             self.info.err(None, 'id:', enty['id'])
-                        _id = enty['id'].split('.')[1]
-                        if _id.isnumeric():
-                            _id = int(_id)
+                        if fidx != -1:
+                            _id = enty['id'].split('.')[1]
+                            if _id.isnumeric():
+                                _id = int(_id)
                         geojson = enty['location']['value']
                         if self.debug:
                             self.info.err(None, 'geojson:', geojson)
@@ -96,7 +97,8 @@ class WidgetLayerUpdate(QWidget):
                         geom = QgsGeometry.fromWkt(geom.ExportToWkt())
                         feat = QgsVectorLayerUtils.createFeature(layer)
                         feat.setGeometry(geom)
-                        feat.setAttribute('id', _id)
+                        if fidx != -1:
+                            feat.setAttribute('id', _id)
                         features.append(feat)
                 else:
                     break
