@@ -13,7 +13,7 @@ To get started quickly setting up a FIWARE environment you can use our [fiware-g
 
 Requirements
 
-  - QGIS LTR
+  - QGIS LTR 3.34.x
   - git
 
 Clone and copy source code into this directory:
@@ -25,4 +25,4 @@ Clone and copy source code into this directory:
 Everyone is invited to get involved and contribute to the project.
 
 Simply create a [fork and pull request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for code contributions or
-feel free to [open an issue](https://github.com/msgis/fiware-gis-quickstart/issues) for any other contributions or issues.
+feel free to [open an issue](https://github.com/msgis/qgis-fiware/issues) for any other contributions or issues.
