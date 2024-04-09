@@ -1,6 +1,25 @@
-Installation:
+# FIWARE QGIS Connector
 
+A plugin for QGIS to connect to a FIWARE Context Broker instance. 
+Currently this repo is POC. 
+
+---
+
+## Quickstart
+
+To get started quickly setting up a FIWARE environment you can use our [fiware-gis-quickstart](https://github.com/msgis/fiware-gis-quickstart).
+
+Requirements
+
+  - QGIS LTR
+  - git
+
+Clone and copy source code into this directory. 
 c:\Users\xy\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\fiware
 
-Das Plugin sucht beim Start nach dem Layer "Hydrant" um zu starten.
-Danach holt es sich die typeList und sucht für jeden Eintrag den entsprechenden Layer.
+## Contributing
+
+Everyone is invited to get involved and contribute to the project.
+
+Simply create a [fork and pull request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for code contributions or
+feel free to [open an issue](https://github.com/msgis/fiware-gis-quickstart/issues) for any other contributions or issues.
