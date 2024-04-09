@@ -1,9 +1,11 @@
 # FIWARE QGIS Connector
 
 A plugin for QGIS to connect to a FIWARE Context Broker instance. 
-Currently this repo is POC. 
 
 ---
+
+> [!WARNING]  
+> As of April 2024, this repo is to be considered POC. 
 
 ## Quickstart
 
