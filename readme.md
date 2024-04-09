@@ -4,7 +4,7 @@ A plugin for QGIS to connect to a FIWARE Context Broker instance.
 
 ---
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > As of April 2024, this repo is to be considered POC. 
 
 ## Quickstart
