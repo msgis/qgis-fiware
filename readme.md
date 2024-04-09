@@ -16,8 +16,9 @@ Requirements
   - QGIS LTR
   - git
 
-Clone and copy source code into this directory. 
-c:\Users\xy\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\fiware
+Clone and copy source code into this directory:
+
+`C:\Users\{YOUR_USERNAME}\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\fiware`
 
 ## Contributing
 
